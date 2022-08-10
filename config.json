@@ -1,0 +1,14 @@
+{
+    "port": "6669",
+    "sender": "youremail@gmail.com",
+    "SMPT":
+        {
+            "host": "smtp.example.pl",
+            "port": 123,
+            "auth":
+                {
+                   "user": "[USERNAME]",
+                   "pass": "[PASSWORD]" 
+                }
+        }
+}
