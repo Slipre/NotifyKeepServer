@@ -1,7 +1,7 @@
 {
     "port": "6669",
     "sender": "youremail@gmail.com",
-    "SMPT":
+    "SMTP":
         {
             "host": "smtp.example.pl",
             "port": 123,
