@@ -1,7 +1,22 @@
 {
+  "name": "notifykeepserver",
+  "version": "1.0.0",
+  "description": "> Usługa sprawdzająca miejsce na dysku",
+  "main": "Main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DirtyHeroine/NotifyKeepServer.git"
+  },
   "dependencies": {
     "nodemailer": "^6.7.7",
     "ws": "^8.8.1",
     "fs": "0.0.1-security"
-  }
+  },
+  "keywords": ["notifykeep","keepnotify", "notifykeepserver"],
+  "author": "Przemysław 'JokeR' Śliwa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DirtyHeroine/NotifyKeepServer/issues"
+  },
+  "homepage": "https://github.com/DirtyHeroine/NotifyKeepServer#readme"
 }
