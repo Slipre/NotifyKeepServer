@@ -1,31 +1,35 @@
 const WebSocket = require('ws');
 const fs = require('fs');
+const dates = new Map();
+let emails = new Array();
+fs.readFileSync('./emails.txt', 'utf-8').split(/\r?\n/).forEach(function(line) { if (line != '') { emails.push(line); } });
 const nodemailer = require('nodemailer');
 const { chkDate } = require('./Date');
-const { log, buildHTML } = require('./Utils');
-const { SMTP, port, sender } = require('./config.json');
+const { log, buildHTML, Setup } = require('./Utils');
+const { SMTP, port, sender, send_time, ask_time } = require('./config.json');
 const transport = nodemailer.createTransport(SMTP);
-var emails = new Array();
-let toSend = "";
-
-Setup();
-Sender();
-
 const wss = new WebSocket.Server({ port: port });
 wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(message) {
-    log(message);
-    toSend = toSend + message + "<br>";
+  ws.on('message', function incoming(msg) {
+    try {
+      const date = JSON.parse(msg);
+      dates.set(date.name, date.left);
+    }catch(err){ log(msg); }
   });
 });
-
+async function Asking() {
+  wss.clients.forEach((client) => {
+    client.send("dataplease");
+  });
+}
 async function Sending(){
+  let mail = getMap();
   for (j = 0; j < emails.length; j++) {
     let message = {
       from: sender,
       to: emails[j],
       subject: 'Monitoring Serwisów WWW',
-      html: buildHTML(toSend)
+      html: buildHTML(mail)
     };
     transport.sendMail(message, (err) => {
       if (err) {
@@ -39,21 +43,17 @@ async function Sending(){
     });
   }
 }
-
+function getMap() {
+  let callback = "";
+  dates[Symbol.iterator] = function* () { yield* [...this.entries()].sort((a, b) => a[1] - b[1]); }
+  for (let [key, value] of dates) { callback = callback + "Na: " + key + " pozostało: " + value + "<br>"; }
+  return callback;
+}
 async function Sender(){
-  if(chkDate()) Sending();
+  if(chkDate(ask_time.hour, ask_time.minute)) Asking();
+  if(chkDate(send_time.hour, send_time.minute)) Sending();
   await new Promise(res=>setTimeout(res,60000));
   process.nextTick(Sender);
 }
-
-function Setup(){
-  console.log("======START======");
-  console.log("==[NOTIFYKEEPS]==");
-  console.log("");
-  log("Ładowanie emaili:");
-  fs.readFileSync('./emails.txt', 'utf-8').split(/\r?\n/).forEach(function(line) { if (line != '') { emails.push(line); } });
-  console.log(emails);
-  console.log("=================");
-  log("Praca w tle rozpoczęta...");
-  log("Życzę miłego dnia i smacznej Kawusi :)")
-}
+Setup(emails);
+Sender();

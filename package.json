@@ -1,7 +1,7 @@
 {
   "name": "notifykeepserver",
   "version": "1.0.0",
-  "description": "> Usługa sprawdzająca miejsce na dysku",
+  "description": "Usługa sprawdzająca miejsce na dysku",
   "main": "Main.js",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
     "ws": "^8.8.1",
     "fs": "0.0.1-security"
   },
-  "keywords": ["notifykeep","keepnotify", "notifykeepserver"],
+  "keywords": ["notifykeep","keepnotify", "notifykeepserver","notify","node","nodejs"],
   "author": "Przemysław 'JokeR' Śliwa",
   "license": "ISC",
   "bugs": {

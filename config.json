@@ -1,14 +1,24 @@
 {
-    "port": "6669",
+    "port": "6969",
     "sender": "youremail@gmail.com",
     "SMTP":
         {
-            "host": "smtp.example.pl",
+            "host": "smtp.example.com",
             "port": 123,
             "auth":
                 {
                    "user": "[USERNAME]",
                    "pass": "[PASSWORD]" 
                 }
+        },
+    "ask_time":
+        {
+            "hour": 23,
+            "minute": 50
+        },
+    "send_time": 
+        {
+            "hour": 0,
+            "minute": 0
         }
 }
