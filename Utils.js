@@ -4,8 +4,8 @@ function log(text) {
     console.log(welcome + text);
 }
 function buildHTML(data){
-    return "<html><body><b>Monitoring serwisów WWW:</b><br>" + data +
-    "<br><br>" + getDate() + "</body></html>";
+    return "<html><body><b>Monitoring pamięci serwisów WWW:</b><br><br>" + data +
+    "<br><br><i>" + getDate() + "</i></body></html>";
 }
 function Setup(emails){
     console.log('\x1b[36m%s', "======START======");

@@ -28,7 +28,7 @@ async function Sending(){
     let message = {
       from: sender,
       to: emails[j],
-      subject: 'Monitoring Serwisów WWW',
+      subject: 'Monitoring Pamięci Serwisów WWW',
       html: buildHTML(mail)
     };
     transport.sendMail(message, (err) => {
