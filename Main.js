@@ -46,7 +46,7 @@ async function Sending(){
 function getMap() {
   let callback = "";
   dates[Symbol.iterator] = function* () { yield* [...this.entries()].sort((a, b) => a[1] - b[1]); }
-  for (let [key, value] of dates) { callback = callback + "Na: " + key + " pozostało: " + value + "<br>"; }
+  for (let [key, value] of dates) { callback = callback + "Na: <b>" + key + "</b> pozostało: <b>" + value + "</b> %<br>"; }
   return callback;
 }
 async function Sender(){
