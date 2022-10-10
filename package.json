@@ -5,7 +5,7 @@
   "main": "Main.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DirtyHeroine/NotifyKeepServer.git"
+    "url": "git+https://github.com/Slipre/NotifyKeepServer.git"
   },
   "dependencies": {
     "nodemailer": "^6.7.7",
@@ -13,10 +13,10 @@
     "fs": "0.0.1-security"
   },
   "keywords": ["notifykeep","keepnotify", "notifykeepserver","notify","node","nodejs"],
-  "author": "Przemysław 'JokeR' Śliwa",
+  "author": "Przemysław 'Slipre' Śliwa",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DirtyHeroine/NotifyKeepServer/issues"
+    "url": "https://github.com/Slipre/NotifyKeepServer/issues"
   },
-  "homepage": "https://github.com/DirtyHeroine/NotifyKeepServer#readme"
+  "homepage": "https://github.com/Slipre/NotifyKeepServer#readme"
 }
